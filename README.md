@@ -1,2 +1,2 @@
 # NWS
-Retrieve National Weather service data
+Retrieve latest National Weather Service data for a specific station
