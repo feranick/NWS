@@ -9,7 +9,7 @@ include = [
 
 [project]
 name = "NWS_latest"
-version = "v2024.01.08.1"
+version = "v2024.01.09.1"
 dependencies = ["pytz" ,"tzlocal"]
 authors = [{ name="Nicola Ferralis", email="feranick@hotmail.com" },]
 description = "Retrieve latest National Weather Service data for a specific station"
