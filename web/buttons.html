@@ -1,0 +1,32 @@
+<html manifest="nws.manifest">
+<html><head>
+
+<title>NWS Latest data</title>
+
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+            
+            <!-- Eliminate url and button bars if added to home screen -->
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            
+            <!-- Choose how to handle the phone status bar -->
+            <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+            
+            <link rel="stylesheet" type="text/css" href="nws.css" media="screen" />
+            
+            <!-- Choose a 57x57 image for the icon -->
+            <link rel="apple-touch-icon" href="pm_icon.png" />
+            
+<script type="text/javascript">
+
+function submit()
+{return document.NWS_Latest.stat_name.value;}
+
+</script>
+</head>
+<body>
+
+<form name = "NWS_Latest" action = "index.php" method = "POST">
+<br>Station =  <input name="station" value="kbos" size="12" maxlength="12" type="text" id="Entry"> 
+<input type = "submit" name ="submit" id="Submit" value = "Submit" onclick='submit()'>
+</form>
+</body></html>
