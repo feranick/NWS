@@ -47,18 +47,30 @@ def main():
         "%Y-%m-%dT%H:%M:%S+%f:00")
     local_dt = dt.replace(tzinfo=pytz.utc).astimezone(tzlocal.get_localzone())
     
-    print("\nStation: ",sys.argv[1])
-    print("Elevation: %d meters" % int(wdata['properties']['elevation']['value']))
+    print("\n\033[1mStation: ",sys.argv[1],"\033[0m")
+    print("Elevation: %d meters" % intN(wdata['properties']['elevation']['value']))
     print("Timestamp:",local_dt)
-    print("\nTemperature: %0.1f degC" % float(wdata['properties']['temperature']['value']))
-    print("Relative humidity: %0.1f %%" % float(wdata['properties']['relativeHumidity']['value']))
-    print("Dew point: %0.1f degC" % float(wdata['properties']['dewpoint']['value']))
-    print("Wind speed: %0.1f km/h" % float(wdata['properties']['windSpeed']['value']))
+    print("\nTemperature: %0.1f degC" % floatN(wdata['properties']['temperature']['value']))
+    print("Relative humidity: %0.1f %%" % floatN(wdata['properties']['relativeHumidity']['value']))
+    print("Dew point: %0.1f degC" % floatN(wdata['properties']['dewpoint']['value']))
+    print("Wind speed: %0.1f km/h" % floatN(wdata['properties']['windSpeed']['value']))
     #print("Wind gust: %0.1f" % float(wdata['properties']['windGust']['value']))
-    #print("Heat Index: %0.2f degC" % float(wdata['properties']['heatIndex']['value']))
-    print("Wind Chill: %0.1f degC" % float(wdata['properties']['windChill']['value']))
-    print("\nBarometric Pressure: %0.2f hPa" % (float(wdata['properties']['barometricPressure']['value'])/100))
-    print("Sea-Level Pressure: %0.2f hPa\n" % (float(wdata['properties']['seaLevelPressure']['value'])/100))
+    #print("Heat Index: %0.2f degC" % floatN(wdata['properties']['heatIndex']['value']))
+    print("Wind Chill: %0.1f degC" % floatN(wdata['properties']['windChill']['value']))
+    print("\nBarometric Pressure: %0.2f hPa" % (floatN(wdata['properties']['barometricPressure']['value'])/100))
+    print("Sea-Level Pressure: %0.2f hPa\n" % (floatN(wdata['properties']['seaLevelPressure']['value'])/100))
+    
+def intN(a):
+    if a is not None:
+        return int(a)
+    else:
+        return 0
+        
+def floatN(a):
+    if a is not None:
+        return float(a)
+    else:
+        return 0
         
 #************************************
 ''' Main initialization routine '''
