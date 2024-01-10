@@ -42,7 +42,7 @@ def getNWSData(station):
         "%Y-%m-%dT%H:%M:%S+%f:00")
     local_dt = dt.replace(tzinfo=pytz.utc).astimezone(tzlocal.get_localzone())
     
-    print("\nStation: ",sys.argv[1],"\033[0m")
+    print("\nStation: ",sys.argv[1])
     print("Elevation: %d meters" % intN(wdata['properties']['elevation']['value']))
     print("Timestamp:",local_dt)
     print("\nTemperature: %0.1f degC" % floatN(wdata['properties']['temperature']['value']))

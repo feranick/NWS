@@ -14,7 +14,7 @@ print "
 include('buttons.html');
 
 print "
-<text_area><pre>Result: $output</pre></text_area>
+<text_area><pre>$output</pre></text_area>
 <script>
 console.log('PHP-input:" .$station. "');
 </script>
