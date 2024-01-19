@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script language="javascript" >
+
+url = "https://api.weather.gov/stations/kbos/observations/latest/";
+
+function setURL() {
+    const station = document.getElementById("station").value;
+    //document.getElementById("results").innerHTML = station;
+    return "https://api.weather.gov/stations/"+station+"/observations/latest/";
+}
+
+function getFeed() {
+    fetch(setURL(), {
+    method: "GET",
+    headers: {
+    Accept: "application/json",
+    'User-Agent' : "(feranick, feranick@hotmail.com)"
+    }
+    }).then(res => res.json())
+    .then(data => prediction(data))
+    .catch(err => console.log(err));
+    }
+
+function prediction(wdata) {
+    label = " Station: "+document.getElementById("station").value+"\n";;
+    label += " Elevation: "+wdata['properties']['elevation']['value']+" m\n";
+    label += "\n Temperature: "+wdata['properties']['temperature']['value']+" C\n";
+    label += " Relative humidity: "+wdata['properties']['relativeHumidity']['value']+" %\n";
+    label += " Dew point: "+wdata['properties']['dewpoint']['value']+" C\n";
+    label += " Wind speed: "+wdata['properties']['windSpeed']['value']+" km/h\n";
+    label += " Wind Chill: : "+wdata['properties']['windChill']['value']+" C\n";
+    label += "\n Barometric Pressure: "+wdata['properties']['barometricPressure']['value']/100+" hPa\n";
+    label +=" Sea-Level Pressure: "+wdata['properties']['seaLevelPressure']['value']/100+" hPa\n";
+
+    document.getElementById("results").innerHTML = "".concat(...label);
+    }
+    
+</script>
+<input name="station" id="station" value="kbos" size="12" maxlength="12" type="text">
+<br><input type="submit" id="Status" value="Update Status" onclick=getFeed() />
+<textarea id="results" rows="20" cols="100" ></textarea>
+
+
+</body>
+</html>
